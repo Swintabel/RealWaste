@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title style="color:white;">Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; color:white;
+        }
+        .container {
+            margin: 20px;
+        }
+        .result {
+            margin: 10px 0;
+        }
+        .model-name {
+            font-weight: bold;
+        }
+        .main-image {
+            width: 1200px;
+            height: 700px;
+            display: block;
+            margin: 40;
+        }
+        .container {
+            position: relative;
+            text-align: left;
+
+    </style>
+</head>
+<body style="background-color:black;" style="color:white;">
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="results">
+            {% for model, label in data.items() %}
+                <div class="result">
+                    <span class="model-name">{{ model }}</span> {{ label }}
+                </div>
+            {% endfor %}
+        <a href="/">Upload another image</a>
+        <img src="{{ url_for('static', filename='images/report.jpg') }}" class="main-image"/>
+
+        </div>
+    </div>
+</body>
+</html>

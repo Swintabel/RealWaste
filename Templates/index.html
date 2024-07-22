@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Waste Image Classification</title>
+    <style>
+        .main-image {
+            width: 800px;
+            height: 500px;
+            display: block;
+            margin: 20px auto;
+            margin-right: 90px;
+        }
+        .additional-images {
+            width: 600px;
+            height: 500px;
+            position: absolute;
+        }
+        .container {
+            position: relative;
+            text-align: left;
+        }
+        .top-left {
+            top: 40px;
+            left: 0px;
+        }
+
+    </style>
+</head>
+<body style="color:white; background-color:black;">
+
+    <h1>Waste Image Classification</h1>
+
+    <div class="container">
+        <form action="prediction" method="POST" enctype="multipart/form-data">
+            <input type="file" name="img" accept="image/*">
+            <button type="submit">Upload and Predict</button>
+        </form>
+
+        <img src="{{ url_for('static', filename='images/classes.jpg') }}" class="main-image"/>
+
+        <!-- Additional Images -->
+        <img src="{{ url_for('static', filename='images/distribution.jpg') }}" class="additional-images top-left" />
+    </div>
+
+</body>
+</html>
