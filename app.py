@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import cv2
 import numpy as np
-
+import os
 
 labels = {0: 'Cardboard',
  1: 'Food Organics',
@@ -19,8 +19,15 @@ labels = {0: 'Cardboard',
 
 app = Flask(__name__)
 
-cnn = load_model("cnnModel.keras")
-hyb = load_model("HYBModel.keras")
+# Get the directory of the currently executing script
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Construct the full paths to the model files
+model_path1 = os.path.join(script_dir, "cnnModel.keras")
+model_path2 = os.path.join(script_dir, "HYBModel.keras")
+
+cnn = load_model(model_path1)
+hyb = load_model(model_path1)
 
 @app.route('/')
 def index():
